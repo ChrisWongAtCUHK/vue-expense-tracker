@@ -7,6 +7,12 @@ const props = defineProps({
     required: true,
   },
 })
+
+const emit = defineEmits(['deleteTransaction'])
+
+const onClick = (transactionId) => {
+  emit('deleteTransaction', transactionId)
+}
 </script>
 <template>
   <h3>History</h3>
@@ -17,7 +23,7 @@ const props = defineProps({
       :class="transaction.amount < 0 ? 'minus' : 'plus'"
     >
       {{ transaction.text }} <span>${{ transaction.amount }}</span>
-      <button class="delete-btn">x</button>
+      <button class="delete-btn" @click="onClick(transaction.id)">x</button>
     </li>
   </ul>
 </template>
