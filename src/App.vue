@@ -5,7 +5,7 @@
     <IncomeExpenses :income="income" :expenses="expenses" />
     <TransactionList
       :transactions="transactions"
-      @deleteTransaction="handleDeleteTransaction"
+      @deleteTransaction="handleTransactionDeleted"
     />
     <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
   </div>
@@ -76,7 +76,7 @@ const handleTransactionSubmitted = (transactionData) => {
   saveToLocalStorage()
 }
 
-const handleDeleteTransaction = (transactionId) => {
+const handleTransactionDeleted = (transactionId) => {
   transactions.value = transactions.value.filter(
     (transaction) => transaction.id !== transactionId,
   )

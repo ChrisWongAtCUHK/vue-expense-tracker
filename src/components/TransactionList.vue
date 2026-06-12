@@ -8,10 +8,10 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['deleteTransaction'])
+const emit = defineEmits(['transactionDeleted'])
 
 const onClick = (transactionId) => {
-  emit('deleteTransaction', transactionId)
+  emit('transactionDeleted', transactionId)
 }
 </script>
 <template>
