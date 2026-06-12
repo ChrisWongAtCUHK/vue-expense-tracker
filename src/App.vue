@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+import { useToast } from 'vue-toastification'
 import Header from './components/Header.vue'
 import Balance from './components/Balance.vue'
 import IncomeExpenses from './components/IncomeExpenses.vue'
@@ -54,6 +55,7 @@ const generateUniqueId = () => {
   return Math.floor(Math.random() * 1000000)
 }
 
+const toast = useToast()
 // Add transaction
 const handleTransactionSubmitted = (transactionData) => {
   transactions.value.push({
@@ -61,5 +63,7 @@ const handleTransactionSubmitted = (transactionData) => {
     text: transactionData.text,
     amount: transactionData.amount,
   })
+
+  toast.success('Transaction added')
 }
 </script>
